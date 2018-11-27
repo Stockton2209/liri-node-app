@@ -10,16 +10,43 @@ const OMDb = require("OMDb");
 const fs = require("fs");
 
 //add variables to input the command line arguments
-const command = process.argv[2];
-const query = process.argv[3];
+// var used for terminal command arguments
+var commandArg = process.argv[2];
+
+//Make it so liri.js can take in one of the following commands:
+// * `concert-this`
+// * `spotify-this-song`
+// * `movie-this`
+// * `do-what-it-says`
+if (commandArg === "concert-this") {
+    getArtist();
+} else if (commandArg === "spotify-this-song") {
+    getSong();
+} else if (commandArg === "movie-this") {
+    getMovie();
+} else if (commandArg === "do-what-it-says") {
+    doWhatever();
+} else {
+    console.log("Please enter one of the following commands: concert-this, spotify-this-song, movie-this, do-what-it-says.");
+}
 
 //"concert-this" command
 //request info from Bands in Town Artist Events API
 
-var bandsURL= "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+// var bandsURL= "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
 //access spotify key example:
 //var spotify = new Spotify(keys.spotify);
 
 //OMDb api call
+var findMovie = function(movie) {
+
 var omdbURL = "http://www.omdbapi.com/?apikey=258c9874&" + movie;
+
+axios.get(omdbURL).then(function(response){
+    var movData = response.data;
+    console.log(movData);
+
+});
+};
+findMovie();
