@@ -59,17 +59,48 @@ Concert Date: ${newTime}
     });
 };
 
-// var bandsURL= "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
-//access spotify key example:
-//var spotify = new Spotify(keys.spotify);
+function getSong() {
+    if (userInput === ""){
+        spotify.request("https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE")
+        .then(function(data){
+            console.log(
+`
+----------------
+Artist(s): ${data.artists[0].name}
+Track: ${data.name}
+Album: ${data.album.name}
+Preview Link: ${data.preview_url}
+----------------
+`
+            );
+        }
+        )} else {
+            spotify.search({ type: 'track', query: userInput, limit: 20}, function (err, data) {
+                if (err) {
+                    console.log("Error: " + err);
+                } else {
+                    for (var i = 0; i < data.tracks.items.length; i++){
+                        console.log(
+`
+----------------
+Artist(s): ${data.tracks.items[i].artists[0].name}
+Track: ${data.tracks.items[i].name}
+Album: ${data.tracks.items[i].album.name}
+Preview Link: ${data.tracks.items[i].preview_url}
+----------------
+`
+                        );
+                    }
+                }
+            })
+        }
+    // artist(s)
+    // the song's name
+    // a preview link of the song from spotify
+    // the album that the song is from
+    // if no song is provided, default to "Dirty Deeds" by ACDC
+} 
 
-//OMDb api call
 
-axios.get(omdbURL).then(function(response){
-    var movData = response.data;
-    console.log(movData);
 
-});
-};
-findMovie();
