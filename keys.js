@@ -6,7 +6,7 @@ exports.spotify = {
   secret: process.env.SPOTIFY_SECRET
 };
 
-exports.concert = {
+exports.concrt = {
   id: process.env.concertThis_ID
 }
 
