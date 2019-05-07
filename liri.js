@@ -6,12 +6,14 @@ require("dotenv").config();
 const keys = require("./keys.js");
 const axios = require("axios");
 const spotify = require("spotify");
-const OMDb = require("OMDb");
 const fs = require("fs");
+const moment = require("moment");
 
 //add variables to input the command line arguments
 // var used for terminal command arguments
-var commandArg = process.argv[2];
+let commandArg = process.argv[2];
+let userInput = process.argv.slice(3).join(" ");
+
 
 //Make it so liri.js can take in one of the following commands:
 // * `concert-this`
@@ -39,9 +41,6 @@ if (commandArg === "concert-this") {
 //var spotify = new Spotify(keys.spotify);
 
 //OMDb api call
-var findMovie = function(movie) {
-
-var omdbURL = "http://www.omdbapi.com/?apikey=258c9874&" + movie;
 
 axios.get(omdbURL).then(function(response){
     var movData = response.data;
