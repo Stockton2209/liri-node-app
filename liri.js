@@ -103,4 +103,54 @@ Preview Link: ${data.tracks.items[i].preview_url}
 } 
 
 
+function getMovie() {
+    if (userInput === ""){
+        axios.get("http://www.omdbapi.com/?t=Deadpool&apikey=trilogy").then(function(res){
+            console.log(
+`
+----------------
+Title: ${res.data.Title}
+Release: ${res.data.Year}
+IMDB Rating: ${res.data.imdbRating}
+Rotten Tomatoes Rating: ${res.data.Ratings[1].Source}
+Country: ${res.data.Country}
+Language: ${res.data.Language}
+Plot: ${res.data.Plot}
+Actors: ${res.data.Actors}
+----------------
+`
+            );
+        })
+    } else {
+        let m = userInput.replace(/ /g, "+");
+        console.log(m);
+    axios.get("http://www.omdbapi.com/?t=" + m + "&apikey=trilogy").then(function(res){
+        console.log(
+`
+----------------
+Title: ${res.data.Title}
+Release: ${res.data.Year}
+IMDB Rating: ${res.data.imdbRating}
+Rotten Tomatoes Rating: ${res.data.Ratings[1].Value}
+Country: ${res.data.Country}
+Language: ${res.data.Language}
+Plot: ${res.data.Plot}
+Actors: ${res.data.Actors}
+----------------
+`    
+        );
+    });
+    // title of the movie
+    // year the movie came out
+    // imdb rating of the movie
+    // rotten tomatoes rating of the movie
+    // country where the movie was produced
+    // language of the movie
+    // plot of the movie
+    // actors in the movie
+    // if no movie is provided, default to Deadpool
+    }
+}
+
+
 
