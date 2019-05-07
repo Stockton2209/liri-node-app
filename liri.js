@@ -153,4 +153,27 @@ Actors: ${res.data.Actors}
 }
 
 
+function command() {
+    console.log(userInput + "4");
+    fs.readFile("random.txt", "utf8", function(err, data){
+        let array = data.split(",")
+        userInput = array[1];
+        if (array[0] === "") {
+            console.log("Enter a command");
+        } else if (array[0] === "concert-this") {
+            getArtist(keys.concrt);
+        } else if (array[0] === "spotify-this-song"){
+            getSong();
+        } else if (array[0] === "movie-this"){
+            getMovie();
+        } else if (array[0] === "do-what-it-says"){
+            command();
+        }
+        console.log(array);
+    });
+
+    console.log("after calling readFile");
+    //run "spotify-this-song" for "Dirty Deeds"
+}
+
 
