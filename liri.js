@@ -59,6 +59,8 @@ Concert Date: ${newTime}
     });
 };
 
+//"spotify-this-song" command
+//request info from spotify API
 
 function getSong() {
     if (userInput === ""){
@@ -102,6 +104,8 @@ Preview Link: ${data.tracks.items[i].preview_url}
     // if no song is provided, default to "Dirty Deeds" by ACDC
 } 
 
+//"movie-this" command
+//request info from omdb API
 
 function getMovie() {
     if (userInput === ""){
@@ -152,6 +156,7 @@ Actors: ${res.data.Actors}
     }
 }
 
+//"do-what-it-says" command
 
 function command() {
     console.log(userInput + "4");
