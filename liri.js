@@ -2,13 +2,14 @@
 //with the dotenv package:
 require("dotenv").config();
 
-//Add the code to import the `keys.js` file and store it in a variable.
+//Add the requirements for import
 const keys = require("./keys.js");
 const axios = require("axios");
-const spotify = require("spotify-api"); //spotify-api == node-spotify-api
-const newSpotify = new spotify(keys.spotify);
+const Spotify = require("node-spotify-api"); 
 const fs = require("fs");
 const moment = require("moment");
+
+var spotify = new Spotify(keys.spotify);
 
 //add variables to input the command line arguments
 // var used for terminal command arguments
@@ -21,6 +22,7 @@ let userInput = process.argv.slice(3).join(" ");
 // * `spotify-this-song`
 // * `movie-this`
 // * `do-what-it-says`
+
 if (commandArg === "concert-this") {
     getArtist(keys.concrt);
 } else if (commandArg === "spotify-this-song") {

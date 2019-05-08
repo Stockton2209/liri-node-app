@@ -22,7 +22,6 @@
     "dotenv": "^6.1.0",
     "fs": "0.0.1-security",
     "moment": "^2.22.2",
-    "omdb": "^0.8.0",
-    "spotify": "^0.3.0"
+    "node-spotify-api": "^1.0.7"
   }
 }
